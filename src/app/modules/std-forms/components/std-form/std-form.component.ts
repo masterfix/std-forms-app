@@ -7,9 +7,7 @@ import {
 } from '@angular/core';
 import {
   ControlContainer,
-  FormArray,
   FormControlDirective,
-  FormGroup
 } from '@angular/forms';
 import { StdErrorDirective } from '../../directives/std-error/std-error.directive';
 
@@ -23,15 +21,16 @@ export class StdFormComponent {
   @Input() debug = false;
 
   @ContentChildren(StdErrorDirective) stdErrors: QueryList<StdErrorDirective>;
-  @ContentChildren(FormControlDirective, { descendants: true })
-  formControls: QueryList<FormControlDirective>;
+  @ContentChildren(FormControlDirective, { descendants: true }) formControls: QueryList<FormControlDirective>;
   @ContentChildren(FormControlDirective, {
     descendants: true,
     read: ElementRef
   })
   formControlsElementRefs: QueryList<ElementRef<FormControlDirective>>;
 
-  constructor(private controlContainer: ControlContainer) {}
+  constructor(private controlContainer: ControlContainer) {
+    // this.controlContainer.
+  }
 
   scrollToFirstInvalidControl(): void {
     console.log('found formControls:', this.formControls.length);

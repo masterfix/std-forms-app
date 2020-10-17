@@ -48,7 +48,6 @@ export class StdInputComponent implements AfterViewInit, ControlValueAccessor {
   }
 
   writeValue(value: any): void {
-    console.log(`input '${this.label}' got new value:`, value);
     this.formControl.setValue(value);
   }
 
@@ -68,7 +67,6 @@ export class StdInputComponent implements AfterViewInit, ControlValueAccessor {
     }
   }
 
-  @HostBinding('class.invalid')
   get invalid(): boolean {
     return this.ngControl.touched && this.ngControl.invalid;
   }

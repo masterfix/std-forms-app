@@ -1,15 +1,19 @@
 <div class="json">
   <div>
-    values:<pre>{{ formControl.value | json }}</pre>
+    values:
+    <pre>{{ formControl.value | json }}</pre>
   </div>
   <div>
-    errors:<pre>{{ errors | json }}</pre>
+    errors:
+    <pre>{{ errors | json }}</pre>
   </div>
 </div>
 <hr class="divider" />
 <div class="stats">
   <span>valid: {{ formControl.valid }}</span>
+  <span>invalid: {{ formControl.invalid }}</span>
   <span>touched: {{ formControl.touched }}</span>
   <span>pristine: {{ formControl.pristine }}</span>
+  <span>submitted: {{ false }}</span>
   <span>status: {{ formControl.status }}</span>
 </div>

@@ -1,5 +1,3 @@
-<std-action-button
-  (action)="onAction()"
->
+<std-action-button (action)="onAction()" [disabled]="mergedDisabled">
   <ng-content></ng-content>
 </std-action-button>

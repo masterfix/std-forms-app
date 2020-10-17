@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { AbstractControl, NgControl } from '@angular/forms';
 
 @Component({
@@ -9,10 +9,15 @@ import { AbstractControl, NgControl } from '@angular/forms';
 })
 export class StdDebugFormControlComponent {
 
-  constructor(private ngControl: NgControl) {}
+  constructor(private ngControl: NgControl) { }
 
   get formControl(): AbstractControl {
     return this.ngControl.control;
+  }
+
+  @HostBinding('class.invalid')
+  get invalid(): boolean {
+    return this.ngControl.control.invalid;
   }
 
 }

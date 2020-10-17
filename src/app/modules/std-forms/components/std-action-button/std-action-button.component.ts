@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -7,6 +7,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./std-action-button.component.css']
 })
 export class StdActionButtonComponent {
+
+  @Input() disabled: boolean;
+
   @Output() action = new EventEmitter();
 
   onClick(): void {

@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { timer } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { AppValidators } from './app-validators';
 import { SaveEvent } from './modules/std-forms/components/std-save-button/std-save-button.component';
 
@@ -20,14 +22,15 @@ export class AppComponent {
   constructor() {
     this.form = new FormGroup(
       {
-        [AppComponent.firstNameField]: new FormControl('Jo', {
+        [AppComponent.firstNameField]: new FormControl('John', {
           validators: [
             Validators.required,
-            Validators.minLength(3)
+            Validators.minLength(3),
+            // Validators.maxLength(1)
             // AppValidators.startsWithCapitalLetter
           ]
         }),
-        [AppComponent.lastNameField]: new FormControl('doe', {
+        [AppComponent.lastNameField]: new FormControl('Doe', {
           validators: [AppValidators.startsWithCapitalLetter]
         }),
         [AppComponent.genderField]: new FormControl('male', {
@@ -54,6 +57,10 @@ export class AppComponent {
 
   onSave(event: SaveEvent): void {
     console.log('received save event:', event);
+
+    // do some longer stuff
+    timer(2000).subscribe(() => event.finishSave());
+
   }
 
   onCancelAction(): void {

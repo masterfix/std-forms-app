@@ -1,7 +1,12 @@
 :host {
   border: 2px solid black;
-  background-color: lightpink;
+  border-radius: 4px;
+  background-color: lightgreen;
   padding: 10px;
+}
+
+:host.invalid {
+  background-color: lightpink;
 }
 
 .stats {

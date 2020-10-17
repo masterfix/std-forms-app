@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { AbstractControl, FormControl, FormArray, FormGroup, NgControl, ControlContainer } from '@angular/forms';
 
 @Component({
@@ -9,7 +9,7 @@ import { AbstractControl, FormControl, FormArray, FormGroup, NgControl, ControlC
 })
 export class StdDebugFormGroupComponent {
 
-  constructor(private controlContainer: ControlContainer) {}
+  constructor(private controlContainer: ControlContainer) { }
 
   get formControl(): AbstractControl {
     return this.controlContainer.control;
@@ -17,6 +17,11 @@ export class StdDebugFormGroupComponent {
 
   get errors(): any {
     return this.getErrorsFromControl(this.formControl);
+  }
+
+  @HostBinding('class.invalid')
+  get invalid(): boolean {
+    return this.controlContainer.control.invalid;
   }
 
   private getErrorsFromControl(control: AbstractControl): any {

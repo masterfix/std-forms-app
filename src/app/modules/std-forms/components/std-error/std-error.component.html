@@ -1,4 +1,4 @@
-<ng-template #defaultError let-key="key" let-data="data">
+<ng-template #defaultError let-key="key" let-data>
   <ng-container [ngSwitch]="key">
     <ng-container *ngSwitchCase="'required'">
       This field is required
@@ -13,17 +13,17 @@
       This is not a valid email address
     </ng-container>
     <ng-container *ngSwitchDefault>
-      No error message implemented for:<br>
-      key: {{ key | json }}<br>
+      No error message implemented for key: {{ key | json }}<br>
       data: {{ data | json }}
     </ng-container>
   </ng-container>
 </ng-template>
 
 <div *ngIf="formControl && formControl.touched && formControl.errors">
-  <ul *ngFor="let error of getErrorsArray()">
-     <li>
-        <ng-container *ngTemplateOutlet="getCustomErrorTemplateRef(error.key) ? getCustomErrorTemplateRef(error.key) : defaultError; context: { key: error.key, data: error.data }"></ng-container>
+  <ul>
+    <li *ngFor="let error of getErrorsArray()">
+      <ng-container [ngTemplateOutlet]="getCustomErrorTemplateRef(error.key) || defaultError"
+        [ngTemplateOutletContext]="{ key: error.key, data: error.data, $implicit: error.data }"></ng-container>
     </li>
   </ul>
 </div>

@@ -33,7 +33,6 @@ export class AppValidators {
   public static startsWithCapitalLetter(
     control: FormControl
   ): null | ValidationErrors {
-    console.log('startsWithCapitalLetter value:', control.value);
     const value = String(control.value);
     return value.charAt(0) === value.charAt(0).toUpperCase()
       ? null

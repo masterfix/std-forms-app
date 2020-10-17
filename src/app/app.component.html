@@ -1,4 +1,4 @@
-<std-form [formGroup]="form" [debug]="false">
+<std-form [formGroup]="form" [debug]="true">
 	<std-input [formControl]="firstName" label="First name">
 		<ng-template std-error="required">
 			Custom required error message
@@ -21,12 +21,12 @@
 		</ng-template>
 	</std-radiobutton-group>
 	<std-input [formControl]="email" label="Email">
-		<ng-template std-error="uniqueEmail" let-data="data">
+		<ng-template std-error="uniqueEmail" let-data>
 			Email address '{{ data }}' already in use!
 		</ng-template>
 	</std-input>
 	<std-action-bar>
-		<std-save-button (action)="onSaveAction()" (save)="onSave($event)">
+		<std-save-button (action)="onSaveAction()" (save)="onSave($event)" [disabled]="false">
 			Save
 		</std-save-button>
 		<std-action-button (action)="onCancelAction()">
