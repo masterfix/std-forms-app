@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  flex-flow: column nowrap;
+  margin-bottom: 10px;
+}
+
+:host.invalid {
+  background-color: rgb(255, 183, 183);
+}
+
+.value-wrapper {
+  display: block;
+  padding-left: 5px;
+  margin-bottom: 5px;
+}
+
+.value-wrapper input {
+  height: 23px;
+  vertical-align: middle;
+}
+
+.value-wrapper label {
+  vertical-align: middle;
+  font-size: larger;
+}

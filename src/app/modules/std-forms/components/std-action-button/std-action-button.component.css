@@ -1,0 +1,11 @@
+button {
+  padding: 10px;
+  border: 2px solid black;
+  font-size: larger;
+  background-color: rgb(240, 240, 240);
+  width: 120px;
+}
+
+button:active {
+  background-color: rgb(220, 220, 220);
+}

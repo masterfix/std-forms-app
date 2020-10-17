@@ -1,0 +1,19 @@
+<std-label>
+  {{ label }}
+</std-label>
+
+<input
+  type="text"
+  [formControl]="formControl"
+  (blur)="onBlur()"
+  [class.pending]="pending"
+  [class.invalid]="invalid"
+/>
+
+<std-error
+  [stdErrors]="stdErrors"
+></std-error>
+
+<std-debug-form-control
+  *ngIf="mergedDebug">
+</std-debug-form-control>

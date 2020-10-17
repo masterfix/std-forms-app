@@ -1,0 +1,29 @@
+<ng-template #defaultError let-key="key" let-data="data">
+  <ng-container [ngSwitch]="key">
+    <ng-container *ngSwitchCase="'required'">
+      This field is required
+    </ng-container>
+    <ng-container *ngSwitchCase="'minlength'">
+      Input must contain at least {{ data.requiredLength }} characters
+    </ng-container>
+    <ng-container *ngSwitchCase="'maxlength'">
+      Input must contain not more than {{ data.requiredLength }} characters
+    </ng-container>
+    <ng-container *ngSwitchCase="'email'">
+      This is not a valid email address
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+      No error message implemented for:<br>
+      key: {{ key | json }}<br>
+      data: {{ data | json }}
+    </ng-container>
+  </ng-container>
+</ng-template>
+
+<div *ngIf="formControl && formControl.touched && formControl.errors">
+  <ul *ngFor="let error of getErrorsArray()">
+     <li>
+        <ng-container *ngTemplateOutlet="getCustomErrorTemplateRef(error.key) ? getCustomErrorTemplateRef(error.key) : defaultError; context: { key: error.key, data: error.data }"></ng-container>
+    </li>
+  </ul>
+</div>
